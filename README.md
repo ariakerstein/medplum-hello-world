@@ -5,6 +5,16 @@
     <img src="https://img.shields.io/badge/license-Apache-blue.svg" />
   </a>
 </p>
+Update for the chat ai window: 
+## Setup
+1. Clone this repository
+2. Download the MedALPACA model:
+   ```
+   git clone https://huggingface.co/medalpaca/medalpaca-7b medAlpaca
+   ```
+3. ... (rest of setup instructions)
+### 
+
 
 This example app demonstrates the following:
 
