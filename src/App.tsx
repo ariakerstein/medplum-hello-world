@@ -1,5 +1,5 @@
 import { AppShell, ChatModal, ErrorBoundary, Loading, Logo, useMedplum, useMedplumProfile } from '@medplum/react';
-import { IconUser, IconRobot } from '@tabler/icons-react';  // Import IconRobot for AI icon
+import { IconUser, IconRobot } from '@tabler/icons-react';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PatientHistory } from './components/PatientHistory';
@@ -10,16 +10,16 @@ import { LandingPage } from './pages/LandingPage';
 import { PatientPage } from './pages/PatientPage';
 import { ResourcePage } from './pages/ResourcePage';
 import { SignInPage } from './pages/SignInPage';
-import AiChat from './components/AiChat';  // Import the AiChat component
+import AiChat from './components/AiChat';
 
 export function App(): JSX.Element | null {
   const medplum = useMedplum();
   const profile = useMedplumProfile();
-
+  
   if (medplum.isLoading()) {
     return null;
   }
-
+  
   return (
     <AppShell
       logo={<Logo size={24} />}
@@ -28,7 +28,7 @@ export function App(): JSX.Element | null {
           title: 'My Links',
           links: [
             { icon: <IconUser />, label: 'Patients', href: '/' },
-            { icon: <IconRobot />, label: 'AI', href: '/ai-chat' },  // Add AI chat link
+            { icon: <IconRobot />, label: 'AI', href: '/ai-chat' },
           ],
         },
       ]}
@@ -38,7 +38,8 @@ export function App(): JSX.Element | null {
           <Routes>
             <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
             <Route path="/signin" element={<SignInPage />} />
-            <Route path="/ai-chat" element={<AiChat />} />  // Add AI chat route
+            <Route path="/ai-chat" element={<AiChat />} />
+            <Route path="/ai-chat/:patientId" element={<AiChat />} />
             <Route path="/Patient/:id" element={<PatientPage />}>
               <Route index element={<PatientOverview />} />
               <Route path="overview" element={<PatientOverview />} />
